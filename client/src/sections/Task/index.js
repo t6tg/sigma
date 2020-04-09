@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { TaskListing, Announce } from "../../components/";
+import { TaskListing, Announce, FileDownload } from "../../components";
 
 export function Indexs() {
   return (
@@ -12,6 +12,7 @@ export function Indexs() {
         <Col span={1}></Col>
         <Col span={7}>
           <Announce />
+          <FileDownload />
         </Col>
       </Row>
     </div>
