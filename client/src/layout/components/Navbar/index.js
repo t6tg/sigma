@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
-import "./style.css";
 import { Drawer, Button } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-// import LOGO from "../../../assets/logo.png";
+import LOGO from "../../../assets/logo.png";
+import "./style.css";
+
 class Navbar extends Component {
   state = {
     current: "home",
@@ -28,7 +29,7 @@ class Navbar extends Component {
         <nav className="menuBar">
           <div className="logo">
             <Link to="/">
-              <img style={{ width: "130px" }} alt="logo" />
+              <img src={LOGO} style={{ width: "130px" }} alt="logo" />
             </Link>
           </div>
           <div className="menuCon">

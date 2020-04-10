@@ -1,11 +1,13 @@
 import React from "react";
-import { Navbar } from "./components/Navbar";
+import { Navbar, Footer } from "./components";
 
 export default function MainLayout({ children }) {
+  const isLogin = true;
   return (
     <div>
-      <Navbar />
+      {isLogin && <Navbar />}
       {children}
+      <Footer />
     </div>
   );
 }

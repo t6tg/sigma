@@ -6,13 +6,12 @@
 }
 .logo {
   width: 130px;
-  padding: 10px 0;
   float: left;
 }
 .logo a {
   display: inline-block;
   font-size: 20px;
-  padding: 3px 0px;
+  padding: 0px 0px;
   text-transform: capitalize;
 }
 .menuCon {
@@ -20,14 +19,14 @@
   float: left;
 }
 .menuCon .ant-menu-item {
-  padding: 0px 20px;
+  padding: 6px 20px;
 }
 .menuCon .ant-menu-submenu-title {
-  padding: 10px 6px;
+  padding: 16px 6px;
 }
 .menuCon .ant-menu-item a,
 .menuCon .ant-menu-submenu-title a {
-  padding: 10px 0px;
+  padding: 10px 15px;
 }
 .menuCon .ant-menu-horizontal {
   border-bottom: none;
@@ -82,7 +81,7 @@
   border-bottom-color: transparent;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .barsMenu {
     display: inline-block !important;
   }
