@@ -35,6 +35,13 @@ exports.addProblem = async (req, res, next) => {
       time_limit,
       mem_limit,
     } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const error = new Error();
+      error.status = 422;
+      error.validation = errors.array();
+      throw error;
+    }
     const { username } = req.user;
     const problem = new Problem();
     problem.problem_name = problem_name;
@@ -47,6 +54,17 @@ exports.addProblem = async (req, res, next) => {
     await problem.save();
     res.status(200).json({
       message: "Add Problem Successful",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getProblemStudent = async (req, res, next) => {
+  try {
+    const problem = await Problem.find({ status: 1 });
+    res.status(200).json({
+      data: problem,
     });
   } catch (error) {
     next(error);
