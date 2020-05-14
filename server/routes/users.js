@@ -5,6 +5,7 @@ const passportJWT = require("../middleware/passportJWT");
 const role = require("../middleware/checkRole");
 /* GET users listing. */
 router.post("/login", userController.login);
+router.get("/me", [passportJWT.isLogin], userController.me);
 router.post(
   "/register",
   [passportJWT.isLogin, role.isTeacherAndAdmin],

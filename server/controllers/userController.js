@@ -92,3 +92,19 @@ exports.getTeacher = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.me = async (req, res, next) => {
+  try {
+    const { _id, name, role, section } = req.user;
+    res.status(200).json({
+      user: {
+        id: _id,
+        name,
+        role,
+        section,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
