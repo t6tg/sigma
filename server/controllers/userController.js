@@ -95,13 +95,15 @@ exports.getTeacher = async (req, res, next) => {
 
 exports.me = async (req, res, next) => {
   try {
-    const { _id, name, role, section } = req.user;
+    const { _id, name, role, section, teacher, username } = req.user;
     res.status(200).json({
       user: {
         id: _id,
+        username,
         name,
         role,
         section,
+        teacher,
       },
     });
   } catch (error) {
