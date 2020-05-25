@@ -1,6 +1,6 @@
 # client
 
-> Sigma Grader - Client
+> My wonderful Nuxt.js project
 
 ## Build Setup
 
