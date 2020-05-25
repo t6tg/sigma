@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const config = require("./config");
+const cors = require("cors");
 const passport = require("passport");
 
 //mongo
@@ -23,6 +24,7 @@ const problemRouter = require("./routes/problem");
 
 const app = express();
 
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
