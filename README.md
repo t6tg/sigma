@@ -4,7 +4,7 @@
 
 <p align="center">👨🏽‍💻📝👨‍🎓</p>
 
-<h5 align="center"> Computer Programming II and Object Oriented Programming Grading , Free for University</h5>
+<h5 align="center"> Computer Programming C++ , Java Grading System, Free for University and School</h5>
 
 </p>
 
