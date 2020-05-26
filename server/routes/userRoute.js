@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const user = require("../controllers/userController");
+const passportJWT = require("../middleware/passportJWT");
+const role = require("../middleware/checkRole");
 
 // User Routes
 router.get("/getStudent", user.getStudent);

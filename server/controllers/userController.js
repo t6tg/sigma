@@ -109,3 +109,5 @@ exports.me = async (req, res, next) => {
     next(error);
   }
 };
+
+passport.use(login);
