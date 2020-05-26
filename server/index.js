@@ -1,20 +1,28 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const { PORT } = require("./config");
+const { PORT, DB_NAME } = require("./config");
+const errorHandler = require("./middleware/errorHandler");
+const userRoute = require("./routes/userRoute");
+const indexRoute = require("./routes/indexRoute");
 
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/sigma", {
-  useUnifiedTopology: true,
+mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: true,
 });
 
-app.use(cors);
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({ type: "*/*" }));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/", indexRoute);
+app.use("/users", userRoute);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`[ server ] started at port : ${PORT}`);
 });
+
+module.exports = app;
