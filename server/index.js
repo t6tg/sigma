@@ -2,9 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-require("dotenv");
+const mongoose = require("mongoose");
+const { PORT } = require("./config");
 
-const PORT = process.env.PORT || 3009;
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/sigma", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
