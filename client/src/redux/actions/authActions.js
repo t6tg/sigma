@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 
 const BASE_URL = config.BASE_URL;
 
-export const login = ({ username, password }) => {
+export const signin = ({ username, password }) => {
   return (dispatch) => {
     return axios({
       method: "post",
@@ -24,5 +24,12 @@ export const login = ({ username, password }) => {
       .catch(() => {
         dispatch({ type: "AUTH_ERROR", payload: "Bad Signin Info" });
       });
+  };
+};
+
+export const signout = () => {
+  return (dispatch) => {
+    localStorage.removeItem("token");
+    dispatch({ type: "UNAUTH_USER" });
   };
 };
