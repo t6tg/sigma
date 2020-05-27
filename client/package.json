@@ -6,13 +6,22 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.26.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^3.2.6",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -31,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "postcss-cli": "^7.1.1"
   }
 }

@@ -1,14 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./styles/tailwind.css";
+import * as serviceWorker from "./serviceWorker";
+import { Router, browserHistory } from "react-router";
+import routes from "./routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router history={browserHistory} routes={routes} />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
