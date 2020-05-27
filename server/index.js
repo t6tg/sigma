@@ -3,12 +3,12 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const config = require("./config");
+const { PORT, DB_NAME } = require("./config");
 const cors = require("cors");
 const passport = require("passport");
 
 //mongo
-mongoose.connect(`mongodb://localhost:27017/${config.DB_NAME}`, {
+mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -38,5 +38,9 @@ app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/problem", problemRouter);
 app.use(errorHandler);
+
+app.listen(PORT, () => {
+  console.log(`ready server on http://localhost:${PORT}`);
+});
 
 module.exports = app;
