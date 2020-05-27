@@ -1,4 +1,6 @@
-const User = require("../models/userModel");
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+const config = require("../config");
 
 exports.login = async (req, res, next) => {
   try {
@@ -109,5 +111,3 @@ exports.me = async (req, res, next) => {
     next(error);
   }
 };
-
-passport.use(login);
