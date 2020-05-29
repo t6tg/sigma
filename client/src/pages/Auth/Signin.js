@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
+
 import { Field, reduxForm } from "redux-form";
 
 import { signin } from "../../redux/actions/authActions";
@@ -30,16 +32,15 @@ class Signin extends Component {
               />
             </div>
             <div className="card-footer text-center">
-              <button color="primary" onClick={handleSubmit(this.onSubmit)}>
+              <Button color="primary" onClick={handleSubmit(this.onSubmit)}>
                 Sign in
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       </div>
     );
   }
-
   onSubmit = (values) => {
     this.props.dispatch(signin(values));
   };
@@ -75,7 +76,8 @@ const form = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    errorMessage: state.authReducers.error,
+    errorMessage: state.authReducers.error, //กรณี Signin ไม่ผ่าน
   };
 }
+
 export default connect(mapStateToProps)(form(Signin));

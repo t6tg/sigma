@@ -1,69 +1,104 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router";
+import { Collapse, NavbarToggler, NavbarBrand } from "reactstrap";
 
-export default function Header() {
-  return (
-    <nav className="font-sans flex flex-col text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white shadow sm:items-baseline w-full">
-      <div className="mb-2 sm:mb-0 flex flex-row">
-        <div className="h-10 w-10 self-center mr-2">
-          {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <img
-            className="h-10 w-10 self-center"
-            src="https://scontent.fbkk12-2.fna.fbcdn.net/v/t1.0-9/p960x960/90377903_110894397217283_4478088329086107648_o.jpg?_nc_cat=104&_nc_sid=85a577&_nc_oc=AQkSp8nHaV3zvrNl7frwJBPpu42n_UgWMV4bfwLKqzgTOvKckx70xHytcbYqGewy_og&_nc_ht=scontent.fbkk12-2.fna&_nc_tp=6&oh=f6c1fb8d73748dadee2d17cb00fb3717&oe=5EF4F9DA"
-          />
-        </div>
-        <div>
-          <Link
-            href="/home"
-            className="text-2xl no-underline text-grey-darkest hover:text-blue-dark font-sans font-bold"
-          >
-            SigmaGrader
-          </Link>
-          <br />
-          <span className="text-xs text-grey-dark">
-            Powered By Grader Thailand
-          </span>
-        </div>
-      </div>
+class Header extends Component {
+  state = {
+    isOpen: false,
+  };
 
-      <div className="sm:mb-0 self-center">
-        <div
-          className="h-10"
-          style={{ display: "table-cell", verticalAlign: "middle" }}
-        >
-          <Link
-            href="#"
-            className="text-md no-underline text-black hover:text-blue-dark ml-2 px-1"
-          >
-            👨‍💻 <b>Task</b>
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
+
+  renderLinks() {
+    if (this.props.authentication) {
+      if (this.props.data.role === "student") {
+        return [
+          <li className="nav-item" key={2}>
+            <Link to="/task" className="nav-link">
+              Task
+            </Link>
+          </li>,
+          <li className="nav-item" key={6}>
+            <Link to="/signout" className="nav-link">
+              Sign Out
+            </Link>
+          </li>,
+        ];
+      } else if (this.props.data.role === "teacher") {
+        return [
+          <li className="nav-item" key={2}>
+            <Link to="/work" className="nav-link">
+              แจ้งซ่อม
+            </Link>
+          </li>,
+          <li className="nav-item" key={3}>
+            <Link to="/workrepair" className="nav-link">
+              งานซ่อม
+            </Link>
+          </li>,
+          <li className="nav-item" key={4}>
+            <Link to="/location" className="nav-link">
+              สถานที่
+            </Link>
+          </li>,
+          <li className="nav-item" key={5}>
+            <Link to="/user" className="nav-link">
+              ผู้ใช้งาน
+            </Link>
+          </li>,
+          <li className="nav-item" key={6}>
+            <Link to="/signout" className="nav-link">
+              Sign Out
+            </Link>
+          </li>,
+        ];
+      } else if (this.props.data.role === "admin") {
+        return [
+          <li className="nav-item" key={6}>
+            <Link to="/signout" className="nav-link">
+              Sign Out
+            </Link>
+          </li>,
+        ];
+      }
+    } else {
+      //ถ้ายังไม่ได้ทำการ Signin จะแสดงเมนูเดียวเท่านั้น
+      return (
+        <li className="nav-item" key={1}>
+          <Link to="/signin" className="nav-link">
+            Sign In
           </Link>
-          <Link
-            href="#"
-            className="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1"
-          >
-            🧪 <b>Quiz</b>
-          </Link>
-          <Link
-            href="/two"
-            className="text-md no-underline text-grey-darkest hover:text-blue-dark ml-2 px-1"
-          >
-            👨‍💼 <b>Profile</b>
-          </Link>
-          <Link
-            href="#"
-            className="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1"
-          >
-            🧮 <b>Score</b>
-          </Link>
-          <Link
-            href="#"
-            className="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1"
-          >
-            🚫 <b>Logout</b>
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
+        </li>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <NavbarBrand href="/">SigmaGrader</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <ul className="navbar-nav">{this.renderLinks()}</ul>
+        </Collapse>
+      </nav>
+    );
+  }
 }
+
+//authentication เช็คว่าเป็น true หรือ false
+//data ตัวนี้จะได้ข้อมูล PAYLOAD จาก token ครับ
+//ทั้งหมดทั้งมวลเราจัดการมาตั้งแต่ action, reducer แล้วครับ
+function mapStateToProps(state) {
+  return {
+    authentication: state.authReducers.authenticated,
+    data: state.authReducers.data,
+  };
+}
+
+export default connect(mapStateToProps)(Header);

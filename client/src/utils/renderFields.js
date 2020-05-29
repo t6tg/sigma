@@ -7,10 +7,12 @@ const renderField = ({
   autoFocus,
   meta: { touched, error },
 }) => {
+  //สำหรับรูปแบบ Field ที่เป็น TextArea
   const textareaType = (
     <textarea {...input} placeholder={label} className="form-control" row="3" />
   );
 
+  //สำหรับรูปแบบ Field ที่เป็น TextBox
   const inputType = (
     <input
       {...input}
@@ -24,7 +26,10 @@ const renderField = ({
     <div className="form-group row">
       <label className="col-sm-3 col-form-label">{label}</label>
       <div className="col-sm-9">
+        {/* เลือกว่าจะแสดงแบบ textarea หรือ input ธรรมดา*/}
         {textarea ? textareaType : inputType}
+
+        {/* ส่วนนี้จะแสดงข้อความ error ที่ได้จากการ validate */}
         {touched && error && <small className="text-danger">{error}</small>}
       </div>
     </div>
