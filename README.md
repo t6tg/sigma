@@ -23,7 +23,7 @@ Clone This Repository or Pull a source
 ***** Please fork this Project Before clone ********
 
 ```
-$ git  clone https://github.com/sigmagrader/sigma.git
+$ git  clone https://github.com/[yourUsernmae]/sigma.git
 ```
 
 Install its dependencies
