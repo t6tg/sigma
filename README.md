@@ -20,6 +20,7 @@
 ### 1. Configure app
 
 Clone This Repository or Pull a source
+***** Please fork this Project Before clone ********
 
 ```
 $ git  clone https://github.com/sigmagrader/sigma.git
