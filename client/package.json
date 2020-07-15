@@ -26,6 +26,8 @@
     "eslint-plugin-react": "^7.20.3",
     "lint": "^0.7.0",
     "prettier": "^2.0.5",
+    "tailwindcss-aspect-ratio": "^3.0.0",
+    "tailwindcss-responsive-embed": "^1.0.0",
     "typescript": "^3.9.6"
   }
 }
