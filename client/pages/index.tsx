@@ -7,7 +7,7 @@ const Index = (props: Props) => {
     <div className="flex justify-center items-center container mx-auto mt-20 p-4 xl:p-0">
       <div className="bg-white px-20 py-10 rounded-lg shadow-xl">
         <div className="flex lg:justify-center mb-6">
-          <img src="images/logo.png" alt="logo" width={400} />
+          <img src="images/cis_logo.png" alt="logo" width={400} />
         </div>
         {/* input username */}
         <label className="font-bold">Username</label>
@@ -24,13 +24,13 @@ const Index = (props: Props) => {
           type="password"
           placeholder="*************"
         />
-        <button className="w-full bg-orange-500 mt-6 p-2 text-white font-bold rounded-lg hover:bg-orange-600">
+        <button className="w-full bg-red-800 mt-6 p-2 text-white font-bold rounded-lg hover:bg-red-900">
           SignIn
         </button>
         <p className="font-hairline mt-4 text-center">
           © Copyright 2019 - {new Date().getFullYear()} |{" "}
           <a
-            className="text-orange-500"
+            className="text-red-800"
             target="_blank"
             href="http://thanawatgulati.com"
           >
