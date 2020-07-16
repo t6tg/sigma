@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 interface Props {}
 
@@ -24,9 +24,11 @@ const Index = (props: Props) => {
           type="password"
           placeholder="*************"
         />
-        <button className="w-full bg-red-800 mt-6 p-2 text-white font-bold rounded-lg hover:bg-red-900">
-          SignIn
-        </button>
+        <Link href="/main/task">
+          <button className="w-full bg-red-800 mt-6 p-2 text-white font-bold rounded-lg hover:bg-red-900">
+            SignIn
+          </button>
+        </Link>
         <p className="font-hairline mt-4 text-center">
           © Copyright 2019 - {new Date().getFullYear()} |{" "}
           <a
