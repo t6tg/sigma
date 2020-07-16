@@ -9,6 +9,7 @@
     "debug": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "next": "9.4.4",
     "next-redux-wrapper": "^6.0.2",
     "postcss-preset-env": "^6.7.0",
