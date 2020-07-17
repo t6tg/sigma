@@ -7,7 +7,13 @@ export const setAuth = (payload: any) => ({
   payload,
 });
 
-const login = ({ username, password }: ILOGIN) => {};
+const login = ({ username, password }: ILOGIN) => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(setAuthReducer({token: "1234",user:{username:}}));
+    });
+  };
+};
 
 export default {
   login,

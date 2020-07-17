@@ -8,7 +8,7 @@ const cors = require("cors");
 const passport = require("passport");
 
 //mongo
-mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, {
+mongoose.connect(`mongodb://localhost:27017/sigmagrader`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
